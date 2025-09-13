@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindWell - Mental Health Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-icon">💖</div>
+                    <h1 class="main-title">
+                        <span class="title-word">Mind</span><span class="title-word highlight">Well</span>
+                    </h1>
+                </div>
+                <p class="subtitle">
+                    <span class="subtitle-icon">✨</span>
+                    Your Personal Mental Health & Wellness Companion
+                    <span class="subtitle-icon">💖</span>
+                </p>
+                <div class="header-decorations">
+                    <div class="decoration-dot"></div>
+                    <div class="decoration-dot"></div>
+                    <div class="decoration-dot"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+            <button class="nav-btn" data-section="checkin">Check-in</button>
+            <button class="nav-btn" data-section="journal">Journal</button>
+            <button class="nav-btn" data-section="insights">Insights</button>
+            <button class="nav-btn" data-section="recommendations">Wellness</button>
+            <button class="nav-btn" data-section="motivational-chat">💕 Chat</button>
+            <button class="nav-btn" data-section="games">🎮 Games</button>
+        </nav>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <h3 id="current-streak">0</h3>
+                        <p>Day Streak</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">😊</div>
+                    <div class="stat-info">
+                        <h3 id="avg-mood">-</h3>
+                        <p>Avg Mood</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-info">
+                        <h3 id="total-entries">0</h3>
+                        <p>Total Entries</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💪</div>
+                    <div class="stat-info">
+                        <h3 id="wellness-score">-</h3>
+                        <p>Wellness Score</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-entries">
+                <h3>Recent Check-ins</h3>
+                <div id="recent-list" class="entries-list">
+                    <p class="empty-state">No check-ins yet. Start your wellness journey!</p>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="showSection('checkin')">
+                    <span class="btn-icon">✨</span>
+                    Quick Check-in
+                </button>
+                <button class="quick-btn" onclick="showSection('journal')">
+                    <span class="btn-icon">📝</span>
+                    Write Journal
+                </button>
+            </div>
+        </section>
+
+        <!-- Check-in Section -->
+        <section id="checkin" class="section">
+            <div class="checkin-container">
+                <h2>How are you feeling today?</h2>
+                <div class="mood-selector">
+                    <div class="mood-option" data-mood="1">
+                        <div class="mood-emoji">😢</div>
+                        <span>Very Sad</span>
+                    </div>
+                    <div class="mood-option" data-mood="2">
+                        <div class="mood-emoji">😟</div>
+                        <span>Sad</span>
+                    </div>
+                    <div class="mood-option" data-mood="3">
+                        <div class="mood-emoji">😐</div>
+                        <span>Neutral</span>
+                    </div>
+                    <div class="mood-option" data-mood="4">
+                        <div class="mood-emoji">😊</div>
+                        <span>Happy</span>
+                    </div>
+                    <div class="mood-option" data-mood="5">
+                        <div class="mood-emoji">😄</div>
+                        <span>Very Happy</span>
+                    </div>
+                </div>
+
+                <div class="activities-section">
+                    <h3>What activities did you do today?</h3>
+                    <div class="activities-grid">
+                        <div class="activity-item" data-activity="exercise">
+                            <span class="activity-icon">🏃‍♂️</span>
+                            <span>Exercise</span>
+                        </div>
+                        <div class="activity-item" data-activity="meditation">
+                            <span class="activity-icon">🧘‍♀️</span>
+                            <span>Meditation</span>
+                        </div>
+                        <div class="activity-item" data-activity="socializing">
+                            <span class="activity-icon">👥</span>
+                            <span>Socializing</span>
+                        </div>
+                        <div class="activity-item" data-activity="work">
+                            <span class="activity-icon">💼</span>
+                            <span>Work</span>
+                        </div>
+                        <div class="activity-item" data-activity="hobbies">
+                            <span class="activity-icon">🎨</span>
+                            <span>Hobbies</span>
+                        </div>
+                        <div class="activity-item" data-activity="nature">
+                            <span class="activity-icon">🌳</span>
+                            <span>Nature</span>
+                        </div>
+                        <div class="activity-item" data-activity="sleep">
+                            <span class="activity-icon">😴</span>
+                            <span>Good Sleep</span>
+                        </div>
+                        <div class="activity-item" data-activity="reading">
+                            <span class="activity-icon">📚</span>
+                            <span>Reading</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-section">
+                    <label for="daily-notes">Any additional notes?</label>
+                    <textarea id="daily-notes" placeholder="How was your day? What made you feel this way?"></textarea>
+                </div>
+
+                <button id="submit-checkin" class="submit-btn">Submit Check-in</button>
+            </div>
+        </section>
+
+        <!-- Journal Section -->
+        <section id="journal" class="section">
+            <div class="journal-container">
+                <h2>Daily Journal</h2>
+                <div class="journal-entry">
+                    <textarea id="journal-text" placeholder="Write about your thoughts, feelings, and experiences..."></textarea>
+                    <div class="journal-actions">
+                        <button id="analyze-sentiment" class="analyze-btn">Analyze Sentiment</button>
+                        <button id="save-journal" class="submit-btn">Save Entry</button>
+                    </div>
+                </div>
+                
+                <div id="sentiment-result" class="sentiment-display" style="display: none;">
+                    <h3>Sentiment Analysis</h3>
+                    <div class="sentiment-score">
+                        <div class="sentiment-bar">
+                            <div id="sentiment-fill" class="sentiment-fill"></div>
+                        </div>
+                        <p id="sentiment-text">Neutral</p>
+                    </div>
+                </div>
+
+                <div class="journal-history">
+                    <h3>Previous Entries</h3>
+                    <div id="journal-list" class="entries-list">
+                        <p class="empty-state">No journal entries yet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section id="insights" class="section">
+            <div class="insights-container">
+                <h2>Your Wellness Insights</h2>
+                
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Mood Trend (Last 7 Days)</h3>
+                        <canvas id="moodChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Activity Impact on Mood</h3>
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Weekly Mood Pattern</h3>
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Sentiment Breakdown</h3>
+                        <canvas id="sentimentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section -->
+        <section id="recommendations" class="section">
+            <div class="recommendations-container">
+                <h2>Personalized Wellness Recommendations</h2>
+                <div id="recommendations-list" class="recommendations-grid">
+                    <div class="recommendation-card">
+                        <div class="rec-icon">🌟</div>
+                        <h3>Start Your Journey</h3>
+                        <p>Complete your first mood check-in to receive personalized recommendations!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Motivational Chat Section -->
+        <section id="motivational-chat" class="section">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-avatar">💕</div>
+                    <div class="chat-info">
+                        <h3>Moti</h3>
+                        <p class="chat-status">Your flirty motivational companion</p>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">💕</div>
+                        <div class="message-content">
+                            <p>Hey gorgeous! 😘 I'm Moti, your personal motivation coach. I'm here to lift your spirits and remind you how amazing you are! What's on your mind, beautiful? 💖</p>
+                            <span class="message-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="Tell me what's bothering you, sweetheart..." maxlength="200">
+                    <button id="send-message" class="send-btn">
+                        <span>💌</span>
+                    </button>
+                </div>
+                
+                <div class="quick-responses">
+                    <button class="quick-response-btn" data-message="I'm feeling down today">I'm feeling down</button>
+                    <button class="quick-response-btn" data-message="I need motivation">Need motivation</button>
+                    <button class="quick-response-btn" data-message="I'm stressed">I'm stressed</button>
+                    <button class="quick-response-btn" data-message="Tell me I'm amazing">Compliment me</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="section">
+            <div class="games-container">
+                <h2>🎮 Wellness Games</h2>
+                <p class="games-subtitle">Fun games to boost your mood and exercise your mind!</p>
+                
+                <div class="games-grid">
+                    <!-- Memory Match Game -->
+                    <div class="game-card" id="memory-game-card">
+                        <div class="game-header">
+                            <h3>🧠 Memory Match</h3>
+                            <p>Exercise your brain with this colorful memory game</p>
+                        </div>
+                        <div class="game-content">
+                            <div id="memory-game" class="memory-game">
+                                <div class="game-stats">
+                                    <span>Moves: <span id="memory-moves">0</span></span>
+                                    <span>Time: <span id="memory-time">0:00</span></span>
+                                </div>
+                                <div id="memory-board" class="memory-board"></div>
+                                <button id="memory-restart" class="game-btn">New Game</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mood Colors Game -->
+                    <div class="game-card" id="mood-colors-card">
+                        <div class="game-header">
+                            <h3>🌈 Mood Colors</h3>
+                            <p>Match colors to express and explore your emotions</p>
+                        </div>
+                        <div class="game-content">
+                            <div id="mood-colors-game" class="mood-colors-game">
+                                <div class="mood-prompt" id="mood-prompt">How are you feeling right now?</div>
+                                <div id="color-palette" class="color-palette"></div>
+                                <div class="mood-result" id="mood-result"></div>
+                                <button id="mood-colors-restart" class="game-btn">Try Again</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Breathing Game -->
+                    <div class="game-card" id="breathing-game-card">
+                        <div class="game-header">
+                            <h3>🫁 Breathe & Relax</h3>
+                            <p>Follow the breathing circle to calm your mind</p>
+                        </div>
+                        <div class="game-content">
+                            <div id="breathing-game" class="breathing-game">
+                                <div class="breathing-circle" id="breathing-circle">
+                                    <div class="breathing-text" id="breathing-text">Click to Start</div>
+                                </div>
+                                <div class="breathing-controls">
+                                    <button id="breathing-start" class="game-btn">Start</button>
+                                    <button id="breathing-stop" class="game-btn secondary">Stop</button>
+                                </div>
+                                <div class="breathing-stats">
+                                    <span>Cycles: <span id="breathing-cycles">0</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Affirmation Word Game -->
+                    <div class="game-card" id="word-game-card">
+                        <div class="game-header">
+                            <h3>✨ Positive Words</h3>
+                            <p>Create positive affirmations by connecting words</p>
+                        </div>
+                        <div class="game-content">
+                            <div id="word-game" class="word-game">
+                                <div class="affirmation-display" id="affirmation-display">
+                                    I am...
+                                </div>
+                                <div id="word-options" class="word-options"></div>
+                                <div class="word-score">
+                                    <span>Positivity Score: <span id="word-score">0</span></span>
+                                </div>
+                                <button id="word-game-restart" class="game-btn">New Words</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div class="floating-chat-btn" id="floating-chat-btn" title="Quick Chat with Moti 💕">
+        <div class="chat-icon">💕</div>
+        <div class="chat-pulse"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
